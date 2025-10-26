@@ -94,13 +94,13 @@ h1, p {
 .slider-handle .right { border-left: 10px solid #333; }
 
 
-/* === FINAL CORRECTED LABELS THAT MOVE WITH THE SLIDER === */
-
-/* Shared styles for both labels. They are now BOTH attached to the moving wrapper. */
-#image-compare-container .img-wrapper::before,
-#image-compare-container .img-wrapper::after {
+/* Shared styles for both labels. They are now attached to the SLIDER HANDLE. */
+#image-compare-container .slider-handle::before,
+#image-compare-container .slider-handle::after {
+    content: ''; /* Must be defined, even if empty initially */
     position: absolute;
-    bottom: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Vertically centers the labels with the handle */
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 5px 10px;
@@ -109,24 +109,23 @@ h1, p {
     font-weight: bold;
     pointer-events: none;
     z-index: 5;
-    /* Prevents text wrapping */
     white-space: nowrap;
 }
 
-/* "1440p" label: Positioned just to the LEFT of the slider line. */
-#image-compare-container .img-wrapper::before {
+/* "1440p" label: Positioned to the LEFT of the handle. */
+#image-compare-container .slider-handle::before {
     content: '1440p';
-    /* Position its right edge to the right edge of the wrapper... */
-    right: 100%; 
+    /* Position its right edge to the left edge of the handle... */
+    right: 100%;
     /* ...then push it slightly to the left to create a gap. */
-    margin-right: 10px;
+    margin-right: 15px; 
 }
 
-/* "4K" label: Positioned just to the RIGHT of the slider line. */
-#image-compare-container .img-wrapper::after {
+/* "4K" label: Positioned to the RIGHT of the handle. */
+#image-compare-container .slider-handle::after {
     content: '4K';
-    /* Position its left edge to the right edge of the wrapper... */
+    /* Position its left edge to the right edge of the handle... */
     left: 100%;
     /* ...then push it slightly to the right to create a gap. */
-    margin-left: 10px;
+    margin-left: 15px;
 }
