@@ -27,7 +27,6 @@ h1, p {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     cursor: ew-resize;
     user-select: none;
-    /* FIX #1: This prevents weird whitespace below the image */
     line-height: 0; 
 }
 
@@ -52,9 +51,6 @@ h1, p {
 
 /* The top image itself (2.png) */
 #image-compare-container .img-wrapper img {
-    /* === THE KEY FIX IS HERE === */
-    /* This forces the top image to be full-sized, matching the container's height */
-    /* instead of shrinking to fit inside the clipped wrapper. */
     display: block;
     height: 100%;
     width: auto; /* Width will adjust to maintain aspect ratio */
@@ -63,7 +59,6 @@ h1, p {
     top: 0;
     left: 0;
 }
-
 
 /* The draggable handle */
 #image-compare-container .slider-handle {
@@ -104,136 +99,30 @@ h1, p {
     border-left: 10px solid #333;
 }
 
+
+/* Shared styles for both labels */
 #image-compare-container::before,
-
 #image-compare-container .img-wrapper::before {
-
-	
-
-#image-compare-container::after {
-
     position: absolute;
-
-	
-
-    position: absolute;
-
     bottom: 10px;
-
-	
-
-    bottom: 10px;
-
     background-color: rgba(0, 0, 0, 0.7);
-
-	
-
-    background-color: rgba(0, 0, 0, 0.7);
-
     color: white;
-
-	
-
-    color: white;
-
     padding: 5px 10px;
-
-	
-
-    padding: 5px 10px;
-
     border-radius: 4px;
-
-	
-
-    border-radius: 4px;
-
     font-size: 14px;
-
-	
-
-    font-size: 14px;
-
     font-weight: bold;
-
-	
-
-    font-weight: bold;
-
     pointer-events: none;
-
-	
-
-    pointer-events: none;
-
-    z-index: 5; /* Ensure labels are on top */
-
-	
-
     z-index: 5;
-
 }
 
-	
-
-}
-
-	
-
-	
-
-/* "1440p" label stays fixed on the LEFT */
-
+/* "1440p" label: Attached to the main container, so it's always on the left. */
 #image-compare-container::before {
-
-	
-
-#image-compare-container::before {
-
     content: '1440p';
-
-	
-
-    content: '1440p';
-
     left: 10px;
-
-	
-
-    left: 10px;
-
 }
 
-	
-
-}
-
-	
-
-	
-
-/* "4K" label stays fixed on the RIGHT */
-
+/* "4K" label: Attached to the sliding wrapper, so it moves with the 4K image. */
 #image-compare-container .img-wrapper::before {
-
-	
-
-#image-compare-container::after {
-
     content: '4K';
-
-	
-
-    content: '4K';
-
     right: 10px;
-
-	
-
-    right: 10px;
-
-}
-
-	
-
 }
