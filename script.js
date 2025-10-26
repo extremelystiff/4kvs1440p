@@ -5,7 +5,8 @@
 // The script will automatically create buttons and handle everything.
 const comparisonFolders = [
     'customize',
-    'range'
+    'range',
+    'mainmenu'
 ];
 
 // Set the labels you want. The first one is for the image on the right (1.png),
