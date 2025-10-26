@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1440p vs 4K Image Comparison</title>
+    <title>Image Comparison</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>1440p vs 4K Comparison</h1>
-    <p>Drag the slider to compare the two images.</p>
+    <!-- The main title will be updated by JavaScript -->
+    <h1>Image Comparison</h1>
 
-    <!-- The Image Comparison Container -->
+    <!-- This is where the folder selection buttons will be added -->
+    <div id="comparison-selector-container">
+        <h2>Select a Comparison:</h2>
+        <div id="comparison-selector"></div>
+    </div>
+
+    <!-- The Image Comparison Container (no changes here) -->
     <div id="image-compare-container">
         <!-- The "before" image (bottom layer) -->
-        <img src="1.png" alt="1440p Image">
+        <img src="" alt="Base Image"> <!-- src will be set by JS -->
         
         <!-- The "after" image (top layer, will be clipped) -->
         <div class="img-wrapper">
-            <img src="2.png" alt="4K Image">
+            <img src="" alt="Top Image"> <!-- src will be set by JS -->
         </div>
 
         <!-- The slider handle -->
