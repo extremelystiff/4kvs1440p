@@ -83,7 +83,7 @@ h1, p {
     opacity: 1;
 }
 
-/* Arrows inside the handle */
+
 .slider-handle .slider-arrow {
     width: 0;
     height: 0;
@@ -94,7 +94,7 @@ h1, p {
 .slider-handle .right { border-left: 10px solid #333; }
 
 
-/* Shared styles for both labels. They are now attached to the SLIDER HANDLE. */
+
 #image-compare-container .slider-handle::before,
 #image-compare-container .slider-handle::after {
     content: ''; /* Must be defined, even if empty initially */
@@ -112,18 +112,17 @@ h1, p {
     white-space: nowrap;
 }
 
-/* "1440p" label: Positioned to the LEFT of the handle. */
+
 #image-compare-container .slider-handle::before {
-    content: '1440p';
+    content: '4K';
     /* Position its right edge to the left edge of the handle... */
     right: 100%;
     /* ...then push it slightly to the left to create a gap. */
     margin-right: 15px; 
 }
 
-/* "4K" label: Positioned to the RIGHT of the handle. */
 #image-compare-container .slider-handle::after {
-    content: '4K';
+    content: '1440p';
     /* Position its left edge to the right edge of the handle... */
     left: 100%;
     /* ...then push it slightly to the right to create a gap. */
