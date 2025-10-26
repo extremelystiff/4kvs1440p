@@ -19,41 +19,58 @@ h1, p {
 
 /* Main Container for the Slider */
 #image-compare-container {
-    position: relative; /* This is crucial for positioning the elements inside */
-    max-width: 90vw; /* Limit the max width to 90% of the viewport width */
-    max-height: 80vh; /* Limit the max height */
+    position: relative; /* Crucial for positioning the elements inside */
+    max-width: 90vw;
+    max-height: 80vh;
     border-radius: 8px;
-    overflow: hidden; /* Hides parts of the top image that go outside the wrapper */
+    overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    cursor: ew-resize; /* East-West resize cursor indicates it's draggable */
-    user-select: none; /* Prevents text selection while dragging */
+    cursor: ew-resize;
+    user-select: none;
+    /* FIX #1: This prevents weird whitespace below the image */
+    line-height: 0; 
 }
 
-/* Styles for both images */
-#image-compare-container img {
+/* Base image (1.png), the bottom layer */
+#image-compare-container > img {
     display: block;
-    width: 100%; /* Make images responsive */
+    width: 100%;
     height: auto;
-    pointer-events: none; /* Prevents images from interfering with mouse events */
+    pointer-events: none;
 }
 
-/* Wrapper for the top image ("after" image) */
+/* Wrapper for the top image (2.png) */
 #image-compare-container .img-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 50%; /* Initial position of the slider */
-    overflow: hidden; /* This is the magic that "clips" the top image */
-    border-right: 3px solid white; /* The vertical slider line */
+    overflow: hidden;
+    border-right: 3px solid white;
 }
+
+/* The top image itself (2.png) */
+#image-compare-container .img-wrapper img {
+    /* === THE KEY FIX IS HERE === */
+    /* This forces the top image to be full-sized, matching the container's height */
+    /* instead of shrinking to fit inside the clipped wrapper. */
+    display: block;
+    height: 100%;
+    width: auto; /* Width will adjust to maintain aspect ratio */
+    max-width: none; /* Prevents other styles from shrinking it */
+    position: absolute; /* Ensures it's positioned correctly within the wrapper */
+    top: 0;
+    left: 0;
+}
+
 
 /* The draggable handle */
 #image-compare-container .slider-handle {
     position: absolute;
     top: 50%;
     left: 50%; /* Initial position, matches the wrapper */
-    transform: translate(-50%, -50%); /* Perfectly centers the handle on the line */
+    transform: translate(-50%, -50%);
     height: 50px;
     width: 50px;
     background-color: white;
@@ -99,6 +116,7 @@ h1, p {
     font-size: 14px;
     font-weight: bold;
     pointer-events: none;
+    z-index: 5; /* Ensure labels are on top */
 }
 
 #image-compare-container::before {
