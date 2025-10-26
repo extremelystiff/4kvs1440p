@@ -19,7 +19,7 @@ h1, p {
 
 /* Main Container for the Slider */
 #image-compare-container {
-    position: relative; /* Crucial for positioning the elements inside */
+    position: relative;
     max-width: 90vw;
     max-height: 80vh;
     border-radius: 8px;
@@ -27,15 +27,23 @@ h1, p {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     cursor: ew-resize;
     user-select: none;
-    /* FIX #1: This prevents weird whitespace below the image */
     line-height: 0; 
+    /* === FIX #1: THE ASPECT RATIO FIX === */
+    /* This forces the container to maintain a 16:9 aspect ratio, */
+    /* preventing the images from ever stretching or squishing. */
+    /* You can adjust this if your images are not 16:9. */
+    aspect-ratio: 16 / 9;
 }
 
-/* Base image (1.png), the bottom layer */
-#image-compare-container > img {
-    display: block;
+/* Styles for BOTH images to ensure they stack perfectly */
+#image-compare-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    /* This ensures the image scales to fill the container without distortion */
+    object-fit: cover; 
     pointer-events: none;
 }
 
@@ -45,31 +53,16 @@ h1, p {
     top: 0;
     left: 0;
     height: 100%;
-    width: 50%; /* Initial position of the slider */
+    width: 50%; /* Initial slider position */
     overflow: hidden;
     border-right: 3px solid white;
 }
-
-/* The top image itself (2.png) */
-#image-compare-container .img-wrapper img {
-    /* === THE KEY FIX IS HERE === */
-    /* This forces the top image to be full-sized, matching the container's height */
-    /* instead of shrinking to fit inside the clipped wrapper. */
-    display: block;
-    height: 100%;
-    width: auto; /* Width will adjust to maintain aspect ratio */
-    max-width: none; /* Prevents other styles from shrinking it */
-    position: absolute; /* Ensures it's positioned correctly within the wrapper */
-    top: 0;
-    left: 0;
-}
-
 
 /* The draggable handle */
 #image-compare-container .slider-handle {
     position: absolute;
     top: 50%;
-    left: 50%; /* Initial position, matches the wrapper */
+    left: 50%;
     transform: translate(-50%, -50%);
     height: 50px;
     width: 50px;
@@ -95,18 +88,14 @@ h1, p {
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
 }
+.slider-handle .left { border-right: 10px solid #333; }
+.slider-handle .right { border-left: 10px solid #333; }
 
-.slider-handle .left {
-    border-right: 10px solid #333;
-}
 
-.slider-handle .right {
-    border-left: 10px solid #333;
-}
-
-/* Labels for 1440p and 4K */
+/* === FIX #2: THE LABEL UX FIX === */
+/* Base styles for both labels. They are now both attached to the main container. */
 #image-compare-container::before,
-#image-compare-container .img-wrapper::before {
+#image-compare-container::after {
     position: absolute;
     bottom: 10px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -116,15 +105,17 @@ h1, p {
     font-size: 14px;
     font-weight: bold;
     pointer-events: none;
-    z-index: 5; /* Ensure labels are on top */
+    z-index: 5;
 }
 
+/* "1440p" label stays fixed on the LEFT */
 #image-compare-container::before {
     content: '1440p';
     left: 10px;
 }
 
-#image-compare-container .img-wrapper::before {
+/* "4K" label stays fixed on the RIGHT */
+#image-compare-container::after {
     content: '4K';
     right: 10px;
 }
