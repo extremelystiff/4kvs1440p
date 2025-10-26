@@ -4,9 +4,8 @@
 // Just add the names of your new folders to this list.
 // The script will automatically create buttons and handle everything.
 const comparisonFolders = [
-    'Game-A-Comparison',
-    'Photo-Edit-Example',
-    'Another-Great-Comparison'
+    'customize',
+    'range'
 ];
 
 // Set the labels you want. The first one is for the image on the right (1.png),
