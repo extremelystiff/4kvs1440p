@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1440p vs 4K Image Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>1440p vs 4K Comparison</h1>
+    <p>Drag the slider to compare the two images.</p>
+
+    <!-- The Image Comparison Container -->
+    <div id="image-compare-container">
+        <!-- The "before" image (bottom layer) -->
+        <img src="1.png" alt="1440p Image">
+        
+        <!-- The "after" image (top layer, will be clipped) -->
+        <div class="img-wrapper">
+            <img src="2.png" alt="4K Image">
+        </div>
+
+        <!-- The slider handle -->
+        <div class="slider-handle">
+            <div class="slider-arrow left"></div>
+            <div class="slider-arrow right"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
