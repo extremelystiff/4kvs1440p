@@ -128,3 +128,39 @@ h1, p {
     /* ...then push it slightly to the right to create a gap. */
     margin-left: 15px;
 }
+/* === New Styles for Comparison Selector === */
+#comparison-selector-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#comparison-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#comparison-selector button {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px solid #555;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+#comparison-selector button:hover {
+    background-color: #444;
+    border-color: #777;
+}
+
+/* This class will be added by JS to the active button */
+#comparison-selector button.active {
+    background-color: #007bff;
+    border-color: #0056b3;
+    color: white;
+    font-weight: bold;
+}
